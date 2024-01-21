@@ -112,7 +112,7 @@ setMethod('hovmoller', signature='SpatRaster',
         stop('time index of the object is NULL. Use time().')
 
     ##Calculate the matrix with the zonal function
-    z <- terra::zonal(object, dirLayer, fun = FUN, digits = digits)
+    z <- terra::zonal(object, dirLayer, fun = FUN, na.rm = TRUE, digits = digits)
     ## zonal returns a data.frame with terra objects
     z <- as.matrix(z)
     dat <- expand.grid(x = z[,1], y = tt)
